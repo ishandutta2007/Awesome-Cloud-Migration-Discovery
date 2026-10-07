@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d1117" />
+      <stop offset="50%" stop-color="#161b22" />
+      <stop offset="100%" stop-color="#090d11" />
+    </linearGradient>
+
+    <!-- Accent Gradients -->
+    <linearGradient id="accent-cyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="100%" stop-color="#4facfe" />
+    </linearGradient>
+
+    <linearGradient id="accent-purple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7928ca" />
+      <stop offset="100%" stop-color="#ff0080" />
+    </linearGradient>
+
+    <linearGradient id="glow-cyan" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00f2fe" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#00f2fe" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Glow Filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <style>
+      .title {
+        font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-weight: 800;
+        font-size: 46px;
+        fill: #ffffff;
+      }
+      .subtitle {
+        font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-weight: 500;
+        font-size: 20px;
+        fill: #9ab0c7;
+      }
+      .badge-text {
+        font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        fill: #00f2fe;
+      }
+      
+      /* CSS Animations for Dynamic Effects */
+      @keyframes float-slow {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+      }
+      @keyframes float-fast {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+      }
+      @keyframes pulse-glow {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 0.7; }
+      }
+      @keyframes dash {
+        to { stroke-dashoffset: -40; }
+      }
+
+      .animated-cloud { animation: float-slow 6s ease-in-out infinite; }
+      .animated-node { animation: float-fast 4s ease-in-out infinite; }
+      .pulsing-grid { animation: pulse-glow 5s ease-in-out infinite; }
+      .moving-line { stroke-dasharray: 8, 8; animation: dash 2s linear infinite; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="320" rx="16" fill="url(#bg-grad)" />
+  <rect width="1200" height="320" rx="16" fill="none" stroke="#30363d" stroke-width="2" />
+
+  <!-- Dynamic Animated Tech Grid (Background Layer) -->
+  <g class="pulsing-grid" opacity="0.25">
+    <path d="M0 60 H1200 M0 120 H1200 M0 180 H1200 M0 240 H1200" stroke="#4facfe" stroke-width="1" stroke-dasharray="4 4" />
+    <path d="M150 0 V320 M300 0 V320 M450 0 V320 M600 0 V320 M750 0 V320 M900 0 V320 M1050 0 V320" stroke="#4facfe" stroke-width="1" stroke-dasharray="4 4" />
+  </g>
+
+  <!-- Decorative Network Topology Nodes (Right Side Background / Midground) -->
+  <g opacity="0.65" transform="translate(720, 20)">
+    <!-- Data Flow Animated Lines -->
+    <path class="moving-line" d="M 100 80 L 250 50 L 380 120 L 280 220 L 100 80" stroke="#00f2fe" stroke-width="2" fill="none" />
+    <path class="moving-line" d="M 250 50 L 280 220" stroke="#7928ca" stroke-width="2" fill="none" />
+
+    <!-- Network Nodes -->
+    <g class="animated-node" transform="translate(100, 80)">
+      <circle r="22" fill="#161b22" stroke="#00f2fe" stroke-width="3" filter="url(#glow)" />
+      <text x="0" y="5" text-anchor="middle" fill="#00f2fe" font-family="sans-serif" font-size="12" font-weight="bold">AWS</text>
+    </g>
+
+    <g class="animated-node" transform="translate(250, 50)" style="animation-delay: -1s;">
+      <circle r="26" fill="#161b22" stroke="#4facfe" stroke-width="3" filter="url(#glow)" />
+      <text x="0" y="5" text-anchor="middle" fill="#4facfe" font-family="sans-serif" font-size="12" font-weight="bold">AZURE</text>
+    </g>
+
+    <g class="animated-node" transform="translate(380, 120)" style="animation-delay: -2s;">
+      <circle r="22" fill="#161b22" stroke="#ff0080" stroke-width="3" filter="url(#glow)" />
+      <text x="0" y="5" text-anchor="middle" fill="#ff0080" font-family="sans-serif" font-size="12" font-weight="bold">GCP</text>
+    </g>
+
+    <g class="animated-node" transform="translate(280, 220)" style="animation-delay: -3s;">
+      <circle r="28" fill="#161b22" stroke="#7928ca" stroke-width="3" filter="url(#glow)" />
+      <text x="0" y="5" text-anchor="middle" fill="#7928ca" font-family="sans-serif" font-size="11" font-weight="bold">ON-PREM</text>
+    </g>
+  </g>
+
+  <!-- Foreground Title and Subtitle Content -->
+  <g transform="translate(70, 0)">
+    <!-- Tag Pill -->
+    <g transform="translate(0, 50)">
+      <rect width="260" height="30" rx="15" fill="#162232" stroke="#00f2fe" stroke-width="1.5" />
+      <circle cx="15" cy="15" r="5" fill="#00f2fe" />
+      <text x="30" y="20" class="badge-text">CLOUD DISCOVERY &amp; MIGRATION</text>
+    </g>
+
+    <!-- Main Title -->
+    <text x="0" y="135" class="title">Awesome Cloud Migration</text>
+    <text x="0" y="185" class="title" fill="url(#accent-cyan)">Discovery Ecosystem 🔍☁️</text>
+
+    <!-- Subtitle -->
+    <text x="0" y="232" class="subtitle">Curated Commercial Discovery Platforms &amp; Open-Source Assessment Tools</text>
+    <text x="0" y="260" class="subtitle" font-size="15" fill="#6e7681">Agentless Discovery • Dependency Mapping • 7R Assessment • Topology</text>
+  </g>
+</svg>
